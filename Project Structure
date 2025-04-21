@@ -1,0 +1,13 @@
+foodie-backend
+│
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com.foodie
+│   │   │       ├── controller
+│   │   │       ├── model
+│   │   │       ├── repository
+│   │   │       ├── service
+│   │   │       └── security
+│   │   └── resources
+│   │       ├── application.properties
