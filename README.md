@@ -1,1 +1,35 @@
-# Food-Delivery
+-- USERS
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) UNIQUE,
+  password VARCHAR(255),
+  role ENUM('ADMIN', 'USER') DEFAULT 'USER'
+);
+
+-- RESTAURANTS
+CREATE TABLE restaurants (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  description TEXT,
+  location VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- DISHES
+CREATE TABLE dishes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  restaurant_id INT,
+  name VARCHAR(100),
+  price DECIMAL(10,2),
+  FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
+);
+
+-- ORDERS
+CREATE TABLE orders (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  total DECIMAL(10,2),
+  status ENUM('PENDING', 'COMPLETED') DEFAULT 'PENDING',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
