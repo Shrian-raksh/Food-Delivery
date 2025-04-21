@@ -1,0 +1,132 @@
+1️⃣ Frontend (Angular)
+🛠 Admin Portal
+Login Page
+
+Dashboard with CRUD for:
+
+Restaurants
+
+Dishes
+
+AuthGuard for route protection
+
+JWT Authentication
+
+🛠 End-User Portal
+Restaurant listing
+
+View dishes for a selected restaurant
+
+Filtering by cuisine, location, price range
+
+📦 Tech Stack:
+
+Angular
+
+Angular Material or Bootstrap for UI
+
+Angular HTTP Client for API calls
+
+RxJS Observables for async data
+
+2️⃣ Backend (Spring Boot - Java)
+Microservices:
+User Service (Register/Login)
+
+Restaurant Service
+
+Dish Service
+
+Order Service
+
+Payment (Mock)
+
+📦 Tech Stack:
+
+Spring Boot
+
+Spring Security with JWT
+
+Spring Data JPA
+
+3️⃣ Database Schema (MySQL)
+sql
+Copy
+Edit
+-- USERS
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) UNIQUE,
+  password VARCHAR(255),
+  role ENUM('ADMIN', 'USER') DEFAULT 'USER'
+);
+
+-- RESTAURANTS
+CREATE TABLE restaurants (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  description TEXT,
+  location VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- DISHES
+CREATE TABLE dishes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  restaurant_id INT,
+  name VARCHAR(100),
+  price DECIMAL(10,2),
+  FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
+);
+
+-- ORDERS
+CREATE TABLE orders (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  total DECIMAL(10,2),
+  status ENUM('PENDING', 'COMPLETED') DEFAULT 'PENDING',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+4️⃣ Dockerize the App
+✅ Dockerfile for Angular
+
+✅ Dockerfile for Spring Boot
+
+✅ docker-compose.yml to manage both containers (and MySQL)
+
+5️⃣ Jenkins CI/CD Pipeline
+Jenkinsfiles for both Angular and Java projects
+
+Use GitHub Webhooks to trigger pipeline
+
+Build → Test → Docker Build → Push to DockerHub → Deploy to EC2
+
+6️⃣ AWS Deployment
+Launch EC2
+
+Install Docker, Jenkins, Java, Node.js
+
+Pull images from DockerHub or build from GitHub
+
+Run containers (Spring Boot, Angular, MySQL)
+
+🧩 Optional Enhancements
+Payment Integration (dummy)
+
+User Order History
+
+Email Notifications with Spring Boot Mail
+
+Admin Analytics Dashboard (charts with ngx-charts)
+
+📦 Deliverables Checklist
+
+Module	Status
+Angular Frontend (Admin + User)	⬜️
+Spring Boot Backend (Microservices)	⬜️
+MySQL Schema	⬜️
+Dockerfiles	⬜️
+Jenkinsfile	⬜️
+AWS Deployment (EC2)	⬜️
+CI/CD Pipeline
